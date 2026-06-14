@@ -1,5 +1,7 @@
 # FORGE — Fitness / Strength Tracker
 
+**Live (installable PWA):** https://unitedtrustmortgage.github.io/forge-fitness-tracker/
+
 A single-user mobile strength-training tracker, built from the design handoff in
 the parent folder. Plan and run a workout, log every set (weight × reps), rest on
 an auto timer, browse an exercise library, and review long-term progress
@@ -20,6 +22,21 @@ npm run preview  # serve the production build
 
 On screens wider than 460px the app renders inside a 390×844 iPhone frame; at
 ≤460px it goes full-bleed with a custom status bar (honoring `env(safe-area-inset-*)`).
+
+## Deploy (GitHub Pages)
+
+Hosted from the `gh-pages` branch (no CI — the auth token lacks `workflow` scope).
+To redeploy after changes:
+
+```bash
+npm run build
+cd dist && touch .nojekyll && git init -b gh-pages && git add -A \
+  && git commit -m "deploy" \
+  && git push -f https://github.com/UnitedTrustMortgage/forge-fitness-tracker.git gh-pages \
+  && rm -rf .git
+```
+
+App icons are generated from an inline SVG: `node scripts/gen-icons.mjs`.
 
 ## Locked configuration
 
