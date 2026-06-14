@@ -1,0 +1,105 @@
+/* FORGE — design tokens + base styles
+   Colors, typography, radii from the design handoff (Design Tokens). */
+:root {
+  --bg: #0a0a0b; /* app background (near-black) */
+  --surface: #141416; /* cards */
+  --surface-2: #1b1b1e; /* insets, chips, sub-cards */
+  --surface-3: #26262a; /* steppers, raised controls, ring track */
+  --line: rgba(255, 255, 255, 0.08); /* hairline borders */
+  --text: #f4f4f1; /* primary text */
+  --muted: #9a9a95; /* secondary text */
+  --dim: #66665f; /* tertiary / mono labels */
+  --accent: #ff5a3c; /* brand */
+  --good: #22c55e; /* success / positive */
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  /* the "stage" behind the device frame on desktop */
+  background: #0e0e10;
+  font-family: 'Archivo', system-ui, sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+#root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 460px) {
+  #root {
+    align-items: stretch;
+  }
+}
+
+button {
+  font-family: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+input::placeholder {
+  color: var(--dim);
+}
+
+/* tabular numerals for stats */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+/* hidden scrollbars for app scroll regions and horizontal chip rows */
+.noscroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+.noscroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.appscroll::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+.appscroll {
+  scrollbar-width: none;
+}
+
+/* bar chart grow-in on mount */
+@keyframes bar-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
